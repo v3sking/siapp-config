@@ -79,7 +79,7 @@ spring:
 
 #mybatis
 mybatis:
-  config-location: classpath:mybatis-config.xml
+  #config-location: classpath:mybatis-config.xml
   mapper-locations:
     - classpath*:com/lhy/si/**/mapper/*.xml
 #tkmapper
