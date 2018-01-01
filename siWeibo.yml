@@ -1,9 +1,7 @@
-info:
-  profile: default99
 #server
 server:
-  port: 8080
-  contextPath: /secServer
+  port: 8280
+  contextPath: /siWeibo
 
 spring:
   #http
@@ -96,16 +94,17 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
 #swagger
 swagger:
   enabled: true
   title: siApp-secServer
-  description: 社交app用户中心
+  description: 社交app微博模块
   version: 1.0.0
   license: Apache License, Version 2.0
   licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
   termsOfServiceUrl: http://blog.csdn.net/v2sking
-  contact.name: 再见尼罗河999
+  contact.name: 再见尼罗河
   contact.url: http://blog.csdn.net/v2sking
   contact.email: 1591963820@163.com
   base-package: com.si
@@ -118,34 +117,27 @@ swagger:
       parameterType: header
       required: false
   docket:
-    user: 
-      title: 用户
-      description: 用户相关
-      base-path: /user/**
-    role: 
-      title: 角色
-      description: 查询角色接口
-      base-path: /role/**
-    api:
-      title: api接口
-      description: 查询角色api权限接口
-      base-path: /api/**
-      
+    blog: 
+      title: 微博
+      description: 微博相关接口
+      base-path: /blog/**
+    friend: 
+      title: 好友相关接口
+      description: 好友相关接口
+      base-path: /friend/**
+    
 si:
   mq:
-    type: rabbit
-  sec:
-    anon:
-      paths:
-        - /role/getByUserId
-        - /api/getByRoleId
-        - /user/get
-        - /user/register
-        - /user/login
-        - /login/**
-        - /login*
-        - /index/**
-        - /index*
+    type: sync
+    #授权服务器地址
+  secServer:
+    url: http://sipay.si.com:8080/secServer
+  weibo:
+    maxFeedSize: 5
 
-flyway:
-  baselineOnMigrate: true
+#flyway:
+#  locations: filesystem:C:/Users/Administrator/Desktop/sql
+#  baselineOnMigrate: true
+#  table: t_sql_version
+#  sql-migration-prefix: siapp
+
