@@ -1,5 +1,5 @@
 info:
-  profile: dev
+  profile: dev1
 management:
   security:
     enabled: false
